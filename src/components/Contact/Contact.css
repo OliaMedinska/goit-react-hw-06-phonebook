@@ -1,0 +1,31 @@
+/**/
+.contact-item {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  gap: 10px;
+}
+
+.contact-text {
+  color: rgb(50, 9, 88);
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.contact-button {
+  width: 60px;
+  height: 30px;
+  border-radius: 25px;
+  border: none;
+  background-color: blueviolet;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 400;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.contact-button:hover,
+.contact-button:focus {
+  background-color: rgb(119, 49, 185);
+  cursor: pointer;
+}
