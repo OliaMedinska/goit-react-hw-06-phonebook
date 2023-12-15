@@ -1,8 +1,6 @@
-import PropTypes from 'prop-types';
 import './Filter.css';
-import React from 'react';
 
-const Filter = ({ value, onChange }) => {
+export const Filter = ({ value, onChange }) => {
   return (
     <label className="filter-label">
       Find contact by name
@@ -15,10 +13,3 @@ const Filter = ({ value, onChange }) => {
     </label>
   );
 };
-
-Filter.propTypes = {
-  value: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
-};
-
-export default Filter;
