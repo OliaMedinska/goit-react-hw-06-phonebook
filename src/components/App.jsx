@@ -4,14 +4,16 @@ import { nanoid } from 'nanoid';
 import { Form } from './Form/Form';
 import { Contact } from './Contact/Contact';
 import { Filter } from './Filter/Filter';
-import { addContact, deleteContact } from 'redux/contactsSlice';
-import { setFilter } from 'redux/filtersSlice';
+import {
+  addContact,
+  deleteContact,
+  updateState,
+} from './../redux/contactsSlice';
+import { setFilter } from './../redux/filtersSlice';
 import { useSelector, useDispatch } from 'react-redux';
-import contactsSlice from 'redux/contactsSlice';
-import filtersSlice from 'redux/filtersSlice';
 
 export const App = () => {
-  const contacts = useSelector(state => state.contacts.data);
+  const contacts = useSelector(state => state.contacts);
   const filter = useSelector(state => state.filter);
   const dispatch = useDispatch();
 
@@ -19,15 +21,7 @@ export const App = () => {
     const savedContacts =
       JSON.parse(window.localStorage.getItem('contacts')) || [];
     if (savedContacts.length > 0) {
-      dispatch(
-        savedContacts.map(contact =>
-          addContact({
-            name: contact.name,
-            number: contact.number,
-            id: contact.id,
-          })
-        )
-      );
+      dispatch(updateState(savedContacts));
     }
   }, [dispatch]);
 
