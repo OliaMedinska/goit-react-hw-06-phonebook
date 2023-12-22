@@ -1,5 +1,5 @@
 import './App.css';
-import { useEffect } from 'react';
+// import { useEffect } from 'react';
 import { nanoid } from 'nanoid';
 import { Form } from './Form/Form';
 import { Contact } from './Contact/Contact';
@@ -7,7 +7,7 @@ import { Filter } from './Filter/Filter';
 import {
   addContact,
   deleteContact,
-  updateState,
+  // updateState,
 } from './../redux/contactsSlice';
 import { setFilter } from './../redux/filtersSlice';
 import { useSelector, useDispatch } from 'react-redux';
@@ -17,17 +17,17 @@ export const App = () => {
   const filter = useSelector(state => state.filter);
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    const savedContacts =
-      JSON.parse(window.localStorage.getItem('contacts')) || [];
-    if (savedContacts.length > 0) {
-      dispatch(updateState(savedContacts));
-    }
-  }, [dispatch]);
+  // useEffect(() => {
+  //   const savedContacts =
+  //     JSON.parse(window.localStorage.getItem('contacts')) || [];
+  //   if (savedContacts.length > 0) {
+  //     dispatch(updateState(savedContacts));
+  //   }
+  // }, [dispatch]);
 
-  useEffect(() => {
-    window.localStorage.setItem('contacts', JSON.stringify(contacts));
-  }, [contacts]);
+  // useEffect(() => {
+  //   window.localStorage.setItem('contacts', JSON.stringify(contacts));
+  // }, [contacts]);
 
   const formSubmitHandler = ({ name, number }) => {
     dispatch(
