@@ -13,6 +13,11 @@ export const App = () => {
   const dispatch = useDispatch();
 
   const formSubmitHandler = ({ name, number }) => {
+    if (checkContactName(name)) {
+      alert(`${name} is already in contacts.`);
+      return;
+    }
+
     dispatch(
       addContact({
         name,
@@ -34,6 +39,10 @@ export const App = () => {
 
   const deleteContactHandler = deleteId => {
     dispatch(deleteContact(deleteId));
+  };
+
+  const checkContactName = q => {
+    return contacts.some(({ name }) => name.toLowerCase() === q.toLowerCase());
   };
 
   const filtredContacts = getVisibleContacts();
