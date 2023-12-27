@@ -1,9 +1,22 @@
+import React from 'react';
 import './Contact.css';
 
-export const Contact = ({ contactList, handleDeleteContact }) => {
+export const Contact = ({ contacts, filter, onDeleteContact }) => {
+  const getVisibleContacts = () => {
+    return contacts.filter(({ name }) =>
+      name.toLowerCase().includes(filter.toLowerCase())
+    );
+  };
+
+  const deleteContactHandler = deleteId => {
+    onDeleteContact(deleteId);
+  };
+
+  const filtredContacts = getVisibleContacts();
+
   return (
     <ul>
-      {contactList.map(contact => {
+      {filtredContacts.map(contact => {
         const { id, name, number } = contact;
         return (
           <li key={id} className="contact-item">
@@ -13,7 +26,7 @@ export const Contact = ({ contactList, handleDeleteContact }) => {
             <button
               className="contact-button"
               type="button"
-              onClick={() => handleDeleteContact(id)}
+              onClick={() => deleteContactHandler(id)}
             >
               Delete
             </button>
